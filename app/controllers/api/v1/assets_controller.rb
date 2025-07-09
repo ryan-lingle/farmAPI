@@ -5,7 +5,7 @@ module Api
       before_action :set_asset, only: [ :show, :update, :destroy ]
 
       def index
-        @assets = asset_class.all
+        @assets = Asset.where(asset_type: @asset_type)
         @assets = @assets.where(status: params[:filter][:status]) if params.dig(:filter, :status)
 
         # Handle pagination - support both page[number] and page formats
@@ -22,7 +22,7 @@ module Api
       end
 
       def create
-        @asset = asset_class.new(asset_params)
+        @asset = Asset.new(asset_params)
         @asset.asset_type = @asset_type
 
         if @asset.save
@@ -51,21 +51,8 @@ module Api
         @asset_type = params[:asset_type] || "asset"
       end
 
-      def asset_class
-        case @asset_type
-        when "animal"
-          AnimalAsset
-        when "plant"
-          PlantAsset
-        when "land"
-          LandAsset
-        else
-          Asset
-        end
-      end
-
       def set_asset
-        @asset = asset_class.find(params[:id])
+        @asset = Asset.where(asset_type: @asset_type).find(params[:id])
       end
 
       def asset_params

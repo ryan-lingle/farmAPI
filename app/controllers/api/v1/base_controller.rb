@@ -53,14 +53,11 @@ module Api
           "asset--land": { href: "#{request.base_url}/api/v1/assets/land" },
           "asset--equipment": { href: "#{request.base_url}/api/v1/assets/equipment" },
           "asset--structure": { href: "#{request.base_url}/api/v1/assets/structure" },
+          "asset--material": { href: "#{request.base_url}/api/v1/assets/material" },
           "log--activity": { href: "#{request.base_url}/api/v1/logs/activity" },
           "log--harvest": { href: "#{request.base_url}/api/v1/logs/harvest" },
-          "log--observation": { href: "#{request.base_url}/api/v1/logs/observation" },
-          "log--input": { href: "#{request.base_url}/api/v1/logs/input" },
-          "taxonomy_term--animal_type": { href: "#{request.base_url}/api/v1/taxonomy_terms/animal_type" },
-          "taxonomy_term--plant_type": { href: "#{request.base_url}/api/v1/taxonomy_terms/plant_type" },
-          "taxonomy_term--unit": { href: "#{request.base_url}/api/v1/taxonomy_terms/unit" },
-          "quantity--standard": { href: "#{request.base_url}/api/v1/quantities/standard" },
+          "quantities": { href: "#{request.base_url}/api/v1/quantities" },
+          "locations": { href: "#{request.base_url}/api/v1/locations" },
           self: { href: "#{request.base_url}/api/v1" }
         }
       end
@@ -83,6 +80,24 @@ module Api
             targetMediaType: "application/vnd.api+json",
             targetSchema: { "$ref": "#{request.base_url}/api/v1/assets/plant/schema" },
             templatePointers: { instanceHref: "/links/asset--plant/href" },
+            templateRequired: [ "instanceHref" ]
+          },
+          {
+            href: "{instanceHref}",
+            rel: "related",
+            title: "Land assets",
+            targetMediaType: "application/vnd.api+json",
+            targetSchema: { "$ref": "#{request.base_url}/api/v1/assets/land/schema" },
+            templatePointers: { instanceHref: "/links/asset--land/href" },
+            templateRequired: [ "instanceHref" ]
+          },
+          {
+            href: "{instanceHref}",
+            rel: "related",
+            title: "Activity logs",
+            targetMediaType: "application/vnd.api+json",
+            targetSchema: { "$ref": "#{request.base_url}/api/v1/logs/activity/schema" },
+            templatePointers: { instanceHref: "/links/log--activity/href" },
             templateRequired: [ "instanceHref" ]
           },
           {

@@ -27472,3 +27472,785 @@ Failed to get main page for Hendricks GIS. Code: 403
   ↳ lib/tasks/import_hendricks_parcel.rake:47:in `block (2 levels) in <main>'
   [1m[36mLocation Load (2.6ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."name" = 'Hendricks Parcel 32-06-19-300-004.000-002' LIMIT 1 /*application='FarmApi'*/[0m
   ↳ lib/tasks/import_hendricks_parcel.rake:47:in `block (2 levels) in <main>'
+Started GET "/api/v1/assets?type=plant&per_page=1" for 192.168.65.1 at 2025-07-04 00:17:21 +0000
+Started GET "/api/v1/assets?type=equipment&per_page=1" for 192.168.65.1 at 2025-07-04 00:17:21 +0000
+Started GET "/api/v1/assets?type=animal&per_page=1" for 192.168.65.1 at 2025-07-04 00:17:21 +0000
+  
+LoadError (cannot load such file -- /rails/app/services/geotiff_processor):
+  
+config/initializers/services.rb:5:in `require_relative'
+config/initializers/services.rb:5:in `block in <main>'
+  
+LoadError (cannot load such file -- /rails/app/services/geotiff_processor):
+  
+config/initializers/services.rb:5:in `require_relative'
+config/initializers/services.rb:5:in `block in <main>'
+  
+LoadError (cannot load such file -- /rails/app/services/geotiff_processor):
+  
+config/initializers/services.rb:5:in `require_relative'
+config/initializers/services.rb:5:in `block in <main>'
+Started GET "/api/v1/assets?type=product&per_page=1" for 192.168.65.1 at 2025-07-04 00:17:21 +0000
+Started GET "/api/v1/assets?type=material&per_page=1" for 192.168.65.1 at 2025-07-04 00:17:21 +0000
+Started GET "/api/v1/assets?type=seed&per_page=1" for 192.168.65.1 at 2025-07-04 00:17:21 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (8.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='FarmApi'*/[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=sensor&per_page=1" for 192.168.65.1 at 2025-07-04 00:17:21 +0000
+Started GET "/api/v1/assets?type=compost&per_page=1" for 192.168.65.1 at 2025-07-04 00:17:21 +0000
+Started GET "/api/v1/assets?type=group&per_page=1" for 192.168.65.1 at 2025-07-04 00:17:21 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=land&per_page=1" for 192.168.65.1 at 2025-07-04 00:17:22 +0000
+Started GET "/api/v1/assets?type=water&per_page=1" for 192.168.65.1 at 2025-07-04 00:17:22 +0000
+Started GET "/api/v1/assets?type=structure&per_page=1" for 192.168.65.1 at 2025-07-04 00:17:22 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/logs/input?per_page=1" for 192.168.65.1 at 2025-07-04 00:17:22 +0000
+Started GET "/api/v1/logs/activity?per_page=1" for 192.168.65.1 at 2025-07-04 00:17:22 +0000
+Started GET "/api/v1/logs/harvest?per_page=1" for 192.168.65.1 at 2025-07-04 00:17:22 +0000
+Processing by Api::V1::LogsController#index as JSON
+Processing by Api::V1::LogsController#index as JSON
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"input"}
+  Parameters: {"per_page"=>"1", "log_type"=>"harvest"}
+  Parameters: {"per_page"=>"1", "log_type"=>"activity"}
+  [1m[36mActivityLog Load (2.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 137ms (Views: 0.2ms | ActiveRecord: 58.5ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/api/v1/logs/transplanting?per_page=1" for 192.168.65.1 at 2025-07-04 00:17:22 +0000
+  [1m[36mLog Load (108.7ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 160ms (Views: 0.5ms | ActiveRecord: 146.7ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"transplanting"}
+  [1m[36mLog Load (0.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mHarvestLog Load (1.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 198ms (Views: 0.1ms | ActiveRecord: 54.1ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/api/v1/logs/observation?per_page=1" for 192.168.65.1 at 2025-07-04 00:17:22 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"observation"}
+  [1m[36mLog Load (0.7ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/seeding?per_page=1" for 192.168.65.1 at 2025-07-04 00:17:22 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"seeding"}
+  [1m[36mLog Load (0.5ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/maintenance?per_page=1" for 192.168.65.1 at 2025-07-04 00:17:22 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"maintenance"}
+  [1m[36mLog Load (0.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/assets?type=land" for 192.168.65.1 at 2025-07-04 00:17:22 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=animal&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+Started GET "/api/v1/assets?type=equipment&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+Started GET "/api/v1/assets?type=land&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=material&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+Started GET "/api/v1/assets?type=seed&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+Started GET "/api/v1/assets?type=product&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=sensor&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=compost&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=group&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=equipment&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=animal&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+Started GET "/api/v1/assets?type=land&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=material&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=product&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+Started GET "/api/v1/assets?type=seed&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=sensor&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=compost&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+Started GET "/api/v1/assets?type=group&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=structure&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=plant&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+Started GET "/api/v1/assets?type=structure&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=plant&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=water&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=water&per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+Started GET "/api/v1/logs/activity?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+Started GET "/api/v1/logs/input?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/logs/transplanting?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:10 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"activity"}
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"input"}
+  [1m[36mActivityLog Load (3.6ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 13ms (Views: 0.5ms | ActiveRecord: 3.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mLog Load (5.8ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 5.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/observation?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+Started GET "/api/v1/logs/activity?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"transplanting"}
+  [1m[36mLog Load (1.4ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/input?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"observation"}
+Processing by Api::V1::LogsController#index as JSON
+  [1m[36mLog Load (1.4ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  Parameters: {"per_page"=>"1", "log_type"=>"activity"}
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+  [1m[36mActivityLog Load (1.9ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 7ms (Views: 0.0ms | ActiveRecord: 2.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/transplanting?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+Started GET "/api/v1/logs/observation?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"input"}
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"transplanting"}
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"observation"}
+  [1m[36mLog Load (0.6ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+  [1m[36mLog Load (0.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/maintenance?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"maintenance"}
+  [1m[36mLog Load (0.5ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/seeding?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+Started GET "/api/v1/logs/maintenance?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+Started GET "/api/v1/logs/harvest?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"seeding"}
+  [1m[36mLog Load (0.7ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"maintenance"}
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"harvest"}
+  [1m[36mLog Load (3.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+  [1m[36mHarvestLog Load (1.2ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 3.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 6ms (Views: 0.0ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/seeding?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+Started GET "/api/v1/logs/harvest?per_page=1" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+Started GET "/api/v1/assets?type=land" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"seeding"}
+Processing by Api::V1::LogsController#index as JSON
+  [1m[36mLog Load (2.9ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  Parameters: {"per_page"=>"1", "log_type"=>"harvest"}
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 2.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mHarvestLog Load (2.7ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 2.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=land" for 192.168.65.1 at 2025-07-04 00:18:11 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=plant&per_page=1" for 192.168.65.1 at 2025-07-04 00:19:09 +0000
+Started GET "/api/v1/assets?type=land&per_page=1" for 192.168.65.1 at 2025-07-04 00:19:09 +0000
+Started GET "/api/v1/assets?type=animal&per_page=1" for 192.168.65.1 at 2025-07-04 00:19:09 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=material&per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Started GET "/api/v1/assets?type=seed&per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Started GET "/api/v1/assets?type=product&per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=sensor&per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Started GET "/api/v1/assets?type=group&per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Started GET "/api/v1/assets?type=compost&per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=equipment&per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Started GET "/api/v1/assets?type=structure&per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Started GET "/api/v1/assets?type=water&per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/logs/activity?per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Started GET "/api/v1/logs/harvest?per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Started GET "/api/v1/logs/input?per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"activity"}
+Processing by Api::V1::LogsController#index as JSON
+  [1m[36mActivityLog Load (1.9ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  Parameters: {"per_page"=>"1", "log_type"=>"harvest"}
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Processing by Api::V1::LogsController#index as JSON
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 1.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  Parameters: {"per_page"=>"1", "log_type"=>"input"}
+  [1m[36mHarvestLog Load (2.9ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+  [1m[36mLog Load (0.5ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 2.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 4ms (Views: 0.0ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/transplanting?per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"transplanting"}
+  [1m[36mLog Load (0.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/api/v1/logs/maintenance?per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Started GET "/api/v1/logs/seeding?per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Started GET "/api/v1/logs/observation?per_page=1" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"maintenance"}
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"seeding"}
+  [1m[36mLog Load (1.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mLog Load (1.9ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 1.8ms (1 query, 0 cached) | GC: 0.8ms)
+
+
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"observation"}
+  [1m[36mLog Load (0.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/assets?type=land" for 192.168.65.1 at 2025-07-04 00:19:10 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=animal&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/assets?type=land&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/assets?type=plant&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=product&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/assets?type=material&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/assets?type=seed&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=compost&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/assets?type=sensor&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/assets?type=group&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=animal&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/assets?type=plant&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/assets?type=land&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=product&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/assets?type=material&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/assets?type=seed&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=group&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=compost&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/assets?type=sensor&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=water&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=water&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=equipment&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=equipment&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=structure&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/assets?type=structure&per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/logs/input?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Started GET "/api/v1/logs/activity?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+Started GET "/api/v1/logs/maintenance?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:54 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"input"}
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"activity"}
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"maintenance"}
+  [1m[36mLog Load (62.5ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 71ms (Views: 0.2ms | ActiveRecord: 91.8ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/api/v1/logs/transplanting?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+  [1m[36mActivityLog Load (53.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 67ms (Views: 2.6ms | ActiveRecord: 82.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/input?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+  [1m[36mLog Load (60.6ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 64ms (Views: 0.0ms | ActiveRecord: 97.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/harvest?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"transplanting"}
+  [1m[36mLog Load (1.0ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 5ms (Views: 0.0ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 1.1ms)
+
+
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"input"}
+Started GET "/api/v1/logs/maintenance?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+  [1m[36mLog Load (0.9ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 3ms (Views: 0.0ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/transplanting?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"harvest"}
+  [1m[36mHarvestLog Load (0.8ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 5ms (Views: 0.0ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/api/v1/logs/harvest?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"maintenance"}
+  [1m[36mLog Load (0.8ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 3ms (Views: 0.0ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"transplanting"}
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"harvest"}
+  [1m[36mLog Load (0.3ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+  [1m[36mHarvestLog Load (0.2ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+Completed 200 OK in 3ms (Views: 0.0ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 3ms (Views: 0.0ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/api/v1/logs/observation?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+Started GET "/api/v1/logs/seeding?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+Started GET "/api/v1/logs/activity?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"observation"}
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 5ms (Views: 0.0ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/observation?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"activity"}
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"seeding"}
+  [1m[36mActivityLog Load (1.0ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 3ms (Views: 0.0ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.1ms)
+
+
+  [1m[36mLog Load (1.2ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 3ms (Views: 0.0ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/logs/seeding?per_page=1" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+Started GET "/api/v1/assets?type=land" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"observation"}
+  [1m[36mLog Load (0.5ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 2ms (Views: 0.0ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Processing by Api::V1::LogsController#index as JSON
+  Parameters: {"per_page"=>"1", "log_type"=>"seeding"}
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+  [1m[36mLog Load (1.5ms)[0m  [1m[34mSELECT "logs".* FROM "logs" LIMIT 1 OFFSET 0 /*action='index',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 4ms (Views: 0.0ms | ActiveRecord: 1.5ms (1 query, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/api/v1/assets?type=land" for 192.168.65.1 at 2025-07-04 00:25:55 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assets"):
+  
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/api/v1/assets/animal?page%5Bnumber%5D=1&page%5Bsize%5D=5" for 192.168.65.1 at 2025-07-09 13:29:11 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (3.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='FarmApi'*/[0m
+Processing by Api::V1::AssetsController#index as JSONAPI
+  Parameters: {"page"=>{"number"=>"1", "size"=>"5"}, "asset_type"=>"animal"}
+  [1m[36mAnimalAsset Load (1.0ms)[0m  [1m[34mSELECT "assets".* FROM "assets" LIMIT 5 OFFSET 0 /*action='index',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 106ms (Views: 0.2ms | ActiveRecord: 41.6ms (1 query, 0 cached) | GC: 8.2ms)
+
+
+Started POST "/api/v1/assets/animal" for 192.168.65.1 at 2025-07-09 13:29:24 +0000
+Processing by Api::V1::AssetsController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"animal", "attributes"=>{"name"=>"Test Cow", "status"=>"active", "animal_type"=>"cattle", "breed"=>"Holstein", "sex"=>"female", "notes"=>"Test animal created via MCP"}}}, "asset_type"=>"animal"}
+[31mUnpermitted parameters: :animal_type, :breed, :sex. Context: { controller: Api::V1::AssetsController, action: create, request: #<ActionDispatch::Request:0x0000ffff72e205a0>, params: {"_jsonapi"=>{"data"=>{"type"=>"animal", "attributes"=>{"name"=>"Test Cow", "status"=>"active", "animal_type"=>"cattle", "breed"=>"Holstein", "sex"=>"female", "notes"=>"Test animal created via MCP"}}}, "controller"=>"api/v1/assets", "action"=>"create", "asset_type"=>"animal"} }[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*action='create',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api/v1/assets_controller.rb:28:in `create'
+  [1m[36mAnimalAsset Create (14.4ms)[0m  [1m[32mINSERT INTO "assets" ("name", "status", "notes", "is_location", "is_fixed", "asset_type", "archived_at", "created_at", "updated_at") VALUES ('Test Cow', 'active', 'Test animal created via MCP', FALSE, FALSE, 'animal', NULL, '2025-07-09 13:29:24.350792', '2025-07-09 13:29:24.350792') RETURNING "id" /*action='create',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api/v1/assets_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*action='create',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api/v1/assets_controller.rb:28:in `create'
+Completed 200 OK in 101ms (Views: 0.6ms | ActiveRecord: 33.9ms (1 query, 0 cached) | GC: 6.3ms)
+
+
+Started GET "/api/v1/assets/land?page%5Bnumber%5D=1&page%5Bsize%5D=5" for 192.168.65.1 at 2025-07-09 13:30:23 +0000
+Processing by Api::V1::AssetsController#index as JSONAPI
+  Parameters: {"page"=>{"number"=>"1", "size"=>"5"}, "asset_type"=>"land"}
+  [1m[36mLandAsset Load (5.7ms)[0m  [1m[34mSELECT "assets".* FROM "assets" LIMIT 5 OFFSET 0 /*action='index',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 108ms (Views: 3.6ms | ActiveRecord: 5.7ms (1 query, 0 cached) | GC: 52.7ms)
+
+
+Started GET "/api/v1/assets/plant?page%5Bnumber%5D=1&page%5Bsize%5D=5" for 192.168.65.1 at 2025-07-09 13:30:23 +0000
+Processing by Api::V1::AssetsController#index as JSONAPI
+  Parameters: {"page"=>{"number"=>"1", "size"=>"5"}, "asset_type"=>"plant"}
+  [1m[36mPlantAsset Load (0.6ms)[0m  [1m[34mSELECT "assets".* FROM "assets" LIMIT 5 OFFSET 0 /*action='index',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 37ms (Views: 0.1ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 23.4ms)
+
+
+Started GET "/api/v1/assets/equipment?page%5Bnumber%5D=1&page%5Bsize%5D=5" for 192.168.65.1 at 2025-07-09 13:33:15 +0000
+Processing by Api::V1::AssetsController#index as JSONAPI
+  Parameters: {"page"=>{"number"=>"1", "size"=>"5"}, "asset_type"=>"equipment"}
+  [1m[36mAsset Load (9.0ms)[0m  [1m[34mSELECT "assets".* FROM "assets" LIMIT 5 OFFSET 0 /*action='index',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 21ms (Views: 0.5ms | ActiveRecord: 7.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/assets/material?page%5Bnumber%5D=1&page%5Bsize%5D=5" for 192.168.65.1 at 2025-07-09 13:33:17 +0000
+Processing by Api::V1::AssetsController#index as JSONAPI
+  Parameters: {"page"=>{"number"=>"1", "size"=>"5"}, "asset_type"=>"material"}
+  [1m[36mAsset Load (0.6ms)[0m  [1m[34mSELECT "assets".* FROM "assets" LIMIT 5 OFFSET 0 /*action='index',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/assets/structure?page%5Bnumber%5D=1&page%5Bsize%5D=5" for 192.168.65.1 at 2025-07-09 13:33:19 +0000
+Processing by Api::V1::AssetsController#index as JSONAPI
+  Parameters: {"page"=>{"number"=>"1", "size"=>"5"}, "asset_type"=>"structure"}
+  [1m[36mAsset Load (0.6ms)[0m  [1m[34mSELECT "assets".* FROM "assets" LIMIT 5 OFFSET 0 /*action='index',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/assets/animal" for 192.168.65.1 at 2025-07-09 13:43:24 +0000
+Processing by Api::V1::AssetsController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"animal", "attributes"=>{"name"=>"Test Pig", "status"=>"active", "animal_type"=>"pig", "breed"=>"Yorkshire", "sex"=>"male", "notes"=>"Testing the fixed asset filtering"}}}, "asset_type"=>"animal"}
+[31mUnpermitted parameters: :animal_type, :breed, :sex. Context: { controller: Api::V1::AssetsController, action: create, request: #<ActionDispatch::Request:0x0000ffff72f5a3d0>, params: {"_jsonapi"=>{"data"=>{"type"=>"animal", "attributes"=>{"name"=>"Test Pig", "status"=>"active", "animal_type"=>"pig", "breed"=>"Yorkshire", "sex"=>"male", "notes"=>"Testing the fixed asset filtering"}}}, "controller"=>"api/v1/assets", "action"=>"create", "asset_type"=>"animal"} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='create',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api/v1/assets_controller.rb:28:in `create'
+  [1m[36mAsset Create (10.4ms)[0m  [1m[32mINSERT INTO "assets" ("name", "status", "notes", "is_location", "is_fixed", "asset_type", "archived_at", "created_at", "updated_at") VALUES ('Test Pig', 'active', 'Testing the fixed asset filtering', FALSE, FALSE, 'animal', NULL, '2025-07-09 13:43:25.192730', '2025-07-09 13:43:25.192730') RETURNING "id" /*action='create',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api/v1/assets_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*action='create',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api/v1/assets_controller.rb:28:in `create'
+Completed 200 OK in 173ms (Views: 0.2ms | ActiveRecord: 54.3ms (1 query, 0 cached) | GC: 51.7ms)
+
+
+Started POST "/api/v1/logs/harvest" for 192.168.65.1 at 2025-07-09 13:43:30 +0000
+Processing by Api::V1::LogsController#create as JSONAPI
+  Parameters: {"_jsonapi"=>{"data"=>{"type"=>"harvest", "attributes"=>{"name"=>"Test Harvest", "timestamp"=>"2025-07-09T13:43:30.331753", "status"=>"done", "notes"=>"Testing the fixed log filtering", "quantities"=>[{"measure"=>"weight", "value"=>50.0, "unit"=>"kg", "label"=>"tomatoes quantity"}]}}}, "log_type"=>"harvest"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api/v1/logs_controller.rb:28:in `create'
+  [1m[36mLog Create (4.7ms)[0m  [1m[32mINSERT INTO "logs" ("name", "status", "notes", "log_type", "timestamp", "created_at", "updated_at") VALUES ('Test Harvest', 'done', 'Testing the fixed log filtering', 'harvest', '2025-07-09 13:43:30.331753', '2025-07-09 13:43:30.447006', '2025-07-09 13:43:30.447006') RETURNING "id" /*action='create',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api/v1/logs_controller.rb:28:in `create'
+  [1m[36mQuantity Create (7.1ms)[0m  [1m[32mINSERT INTO "quantities" ("label", "measure", "value", "quantity_type", "created_at", "updated_at", "unit", "log_id") VALUES ('tomatoes quantity', 'weight', 50.0, NULL, '2025-07-09 13:43:30.456401', '2025-07-09 13:43:30.456401', 'kg', 1) RETURNING "id" /*action='create',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api/v1/logs_controller.rb:28:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT /*action='create',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api/v1/logs_controller.rb:28:in `create'
+  [1m[36mQuantity Load (1.9ms)[0m  [1m[34mSELECT "quantities".* FROM "quantities" WHERE "quantities"."log_id" = 1 /*action='create',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:48:in `serialize_resource'
+  [1m[36mAsset Pluck (1.1ms)[0m  [1m[34mSELECT "assets"."id" FROM "assets" INNER JOIN "assets_logs" ON "assets"."id" = "assets_logs"."asset_id" WHERE "assets_logs"."log_id" = 1 /*action='create',application='FarmApi',controller='logs'*/[0m
+  ↳ app/controllers/api_controller.rb:48:in `serialize_resource'
+Completed 200 OK in 147ms (Views: 0.2ms | ActiveRecord: 43.5ms (4 queries, 0 cached) | GC: 11.0ms)
+
+
+Started GET "/api/v1/assets/animal?page%5Bnumber%5D=1&page%5Bsize%5D=5" for 192.168.65.1 at 2025-07-09 13:43:34 +0000
+Processing by Api::V1::AssetsController#index as JSONAPI
+  Parameters: {"page"=>{"number"=>"1", "size"=>"5"}, "asset_type"=>"animal"}
+  [1m[36mAsset Load (2.2ms)[0m  [1m[34mSELECT "assets".* FROM "assets" WHERE "assets"."asset_type" = 'animal' LIMIT 5 OFFSET 0 /*action='index',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 2.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/assets/plant?page%5Bnumber%5D=1&page%5Bsize%5D=5" for 192.168.65.1 at 2025-07-09 13:43:40 +0000
+Processing by Api::V1::AssetsController#index as JSONAPI
+  Parameters: {"page"=>{"number"=>"1", "size"=>"5"}, "asset_type"=>"plant"}
+  [1m[36mAsset Load (1.4ms)[0m  [1m[34mSELECT "assets".* FROM "assets" WHERE "assets"."asset_type" = 'plant' LIMIT 5 OFFSET 0 /*action='index',application='FarmApi',controller='assets'*/[0m
+  ↳ app/controllers/api_controller.rb:35:in `map'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7482427939980664440) /*application='FarmApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='FarmApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='FarmApi'*/[0m
+Migrating to DropElevationCaches (20250709134907)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='FarmApi'*/[0m
+  [1m[35m (29.7ms)[0m  [1m[35mDROP TABLE "elevation_caches" /*application='FarmApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (7.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250709134907') RETURNING "version" /*application='FarmApi'*/[0m
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT /*application='FarmApi'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7482427939980664440) /*application='FarmApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='FarmApi'*/[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='FarmApi'*/[0m
+[dotenv] Loaded [33m.env[0m

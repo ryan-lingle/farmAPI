@@ -5,7 +5,7 @@ module Api
       before_action :set_log, only: [ :show, :update, :destroy ]
 
       def index
-        @logs = log_class.all
+        @logs = Log.where(log_type: @log_type)
         @logs = @logs.where(status: params[:filter][:status]) if params.dig(:filter, :status)
 
         # Handle pagination - support both page[number] and page formats
@@ -22,7 +22,7 @@ module Api
       end
 
       def create
-        @log = log_class.new(log_params)
+        @log = Log.new(log_params)
         @log.log_type = @log_type
 
         if @log.save
@@ -51,19 +51,8 @@ module Api
         @log_type = params[:log_type] || "log"
       end
 
-      def log_class
-        case @log_type
-        when "harvest"
-          HarvestLog
-        when "activity"
-          ActivityLog
-        else
-          Log
-        end
-      end
-
       def set_log
-        @log = log_class.find(params[:id])
+        @log = Log.where(log_type: @log_type).find(params[:id])
       end
 
       def log_params

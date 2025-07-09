@@ -26,47 +26,11 @@ Rails.application.routes.draw do
         delete ":log_type/:id", to: "logs#destroy"
       end
 
-      # Taxonomy term routes
-      scope "taxonomy_terms" do
-        get ":vocabulary", to: "taxonomy_terms#index"
-        post ":vocabulary", to: "taxonomy_terms#create"
-        get ":vocabulary/:id", to: "taxonomy_terms#show"
-        patch ":vocabulary/:id", to: "taxonomy_terms#update"
-        delete ":vocabulary/:id", to: "taxonomy_terms#destroy"
-      end
-
       # Quantity routes
       resources :quantities, only: [ :index, :show, :create, :update, :destroy ]
 
       # Location routes
       resources :locations, only: [ :index, :show, :create, :update, :destroy ]
-
-      # Elevation API routes
-      scope "elevation" do
-        get "point", to: "elevation#point"
-        post "profile", to: "elevation#profile"
-        get "datasets", to: "elevation#datasets"
-        get "usgs_dem", to: "elevation#usgs_dem"
-        get "catalog", to: "elevation#catalog"
-      end
-      
-      # Geocoding API routes
-      scope "geocoding" do
-        get "geocode", to: "geocoding#geocode"
-        get "reverse", to: "geocoding#reverse_geocode"
-        get "search_nearby", to: "geocoding#search_nearby"
-        get "place/:place_id", to: "geocoding#place_details"
-      end
-      
-      # Properties API routes
-      scope "properties" do
-        get "/", to: "properties#index"
-        get "/:id", to: "properties#show"
-        post "create_from_address", to: "properties#create_from_address"
-        patch "/:id/boundaries", to: "properties#update_boundaries"
-        get "search/nearby", to: "properties#search_nearby"
-        post "/:id/link_asset", to: "properties#link_to_asset"
-      end
     end
   end
 
