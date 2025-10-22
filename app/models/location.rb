@@ -1,40 +1,27 @@
 # app/models/location.rb
 class Location < ApplicationRecord
+  # Associations  
+  has_many :assets, foreign_key: 'current_location_id', dependent: :nullify
+  has_many :outgoing_movements, class_name: 'Log', foreign_key: 'from_location_id', dependent: :nullify
+  has_many :incoming_movements, class_name: 'Log', foreign_key: 'to_location_id', dependent: :nullify
+  
+  # Hierarchy - self-referential associations
+  belongs_to :parent, class_name: 'Location', optional: true
+  has_many :children, class_name: 'Location', foreign_key: 'parent_id', dependent: :nullify
+
   validates :name, presence: true
   validates :location_type, inclusion: { in: %w[point polygon],
     message: "%{value} is not a valid location_type" }
 
   validate :validate_geometry
 
-  # Additional attributes that can be stored in the notes field as JSON
-  # like address, place_id, property_type, etc.
-  def metadata
-    return {} if notes.blank?
-    JSON.parse(notes) rescue {}
-  end
-  
-  def metadata=(value)
-    self.notes = value.to_json
-  end
-  
-  # Helper methods for property management
-  def property?
-    metadata['property_type'].present?
-  end
-  
-  def address
-    metadata['address'] || metadata['formatted_address']
-  end
-  
-  def place_id
-    metadata['place_id']
-  end
-  
-  def property_type
-    metadata['property_type']
-  end
-  
-  # Calculate area for polygon properties (in square meters)
+  # Scopes
+  scope :active, -> { where(archived_at: nil) }
+  scope :archived, -> { where.not(archived_at: nil) }
+  scope :points, -> { where(location_type: "point") }
+  scope :polygons, -> { where(location_type: "polygon") }
+
+  # Calculate area for polygon locations (in square meters)
   def area
     return nil unless location_type == 'polygon' && geometry.is_a?(Array)
     
@@ -83,79 +70,79 @@ class Location < ApplicationRecord
       }
     end
   end
-  
-  # Create a property location from Google Maps data
-  def self.create_from_geocode_result(result, location_type: 'point', property_type: nil)
-    metadata = {
-      formatted_address: result[:formatted_address],
-      place_id: result[:place_id],
-      address_components: result[:address_components]
-    }
-    metadata[:property_type] = property_type if property_type
-    
-    geometry = if location_type == 'point'
-      { 'latitude' => result[:latitude], 'longitude' => result[:longitude] }
-    else
-      # For polygon, start with viewport corners as a simple rectangle
-      # User can refine this in the frontend
-      viewport = result[:viewport]
-      if viewport
-        [
-          { 'latitude' => viewport['northeast']['lat'], 'longitude' => viewport['northeast']['lng'] },
-          { 'latitude' => viewport['northeast']['lat'], 'longitude' => viewport['southwest']['lng'] },
-          { 'latitude' => viewport['southwest']['lat'], 'longitude' => viewport['southwest']['lng'] },
-          { 'latitude' => viewport['southwest']['lat'], 'longitude' => viewport['northeast']['lng'] }
-        ]
-      else
-        []
-      end
-    end
-    
-    create!(
-      name: result[:formatted_address] || "Property at #{result[:latitude]}, #{result[:longitude]}",
-      location_type: location_type,
-      geometry: geometry,
-      notes: metadata.to_json,
-      status: 'active'
-    )
-  end
 
   def archive!
     update!(archived_at: Time.current)
   end
 
+  def unarchive!
+    update!(archived_at: nil)
+  end
+
+  def active?
+    archived_at.nil?
+  end
+
+  def archived?
+    archived_at.present?
+  end
+
+  # Hierarchy methods
+  def ancestors
+    return [] unless parent
+    [parent] + parent.ancestors
+  end
+
+  def descendants
+    children + children.flat_map(&:descendants)
+  end
+
+  def root
+    parent ? parent.root : self
+  end
+
+  def root?
+    parent_id.nil?
+  end
+
+  def leaf?
+    children.empty?
+  end
+
+  def siblings
+    return Location.none unless parent_id
+    parent.children.where.not(id: id)
+  end
+
+  def depth
+    ancestors.count
+  end
+
+  # Get all assets in this location and all child locations
+  def all_assets
+    Asset.where(current_location_id: [id] + descendants.map(&:id))
+  end
+
   private
 
   def validate_geometry
+    return if geometry.blank?
+    
     case location_type
-    when "point"
-      validate_point_geometry
-    when "polygon"
-      validate_polygon_geometry
-    else
-      errors.add(:geometry, "is not valid for the specified location_type")
-    end
-  end
-
-  def validate_point_geometry
-    unless geometry.is_a?(Hash) && geometry.key?("latitude") && geometry.key?("longitude")
-      errors.add(:geometry, "must be a hash with 'latitude' and 'longitude' for a point")
-      return
-    end
-
-    unless geometry["latitude"].is_a?(Numeric) && geometry["longitude"].is_a?(Numeric)
-      errors.add(:geometry, "latitude and longitude must be numbers")
-    end
-  end
-
-  def validate_polygon_geometry
-    unless geometry.is_a?(Array) && geometry.all? { |point| point.is_a?(Hash) && point.key?("latitude") && point.key?("longitude") }
-      errors.add(:geometry, "must be an array of hashes with 'latitude' and 'longitude' for a polygon")
-      return
-    end
-
-    unless geometry.all? { |point| point["latitude"].is_a?(Numeric) && point["longitude"].is_a?(Numeric) }
-        errors.add(:geometry, "all polygon points must have numeric latitude and longitude")
+    when 'point'
+      unless geometry.is_a?(Hash) && geometry['latitude'] && geometry['longitude']
+        errors.add(:geometry, 'Point must have latitude and longitude')
+      end
+    when 'polygon'
+      unless geometry.is_a?(Array) && geometry.length >= 3
+        errors.add(:geometry, 'Polygon must have at least 3 points')
+      end
+      
+      geometry.each_with_index do |point, index|
+        unless point.is_a?(Hash) && point['latitude'] && point['longitude']
+          errors.add(:geometry, "Point #{index + 1} must have latitude and longitude")
+        end
+      end
     end
   end
 end

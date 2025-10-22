@@ -1,19 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  status: MyString
-  notes: MyText
-  is_location: false
-  is_fixed: false
-  asset_type: MyString
-  archived_at: 2025-07-01 15:26:54
+  name: Test Asset One
+  status: active
+  notes: Test asset
+  asset_type: animal
+  archived_at: 
+  quantity: 0
 
 two:
-  name: MyString
-  status: MyString
-  notes: MyText
-  is_location: false
-  is_fixed: false
-  asset_type: MyString
-  archived_at: 2025-07-01 15:26:54
+  name: Test Asset Two
+  status: active
+  notes: Test asset
+  asset_type: plant
+  archived_at:
+  quantity: 0

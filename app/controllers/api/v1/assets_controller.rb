@@ -6,11 +6,31 @@ module Api
 
       def index
         @assets = Asset.where(asset_type: @asset_type)
+        
+        # Filter out archived assets by default (unless explicitly requested)
+        @assets = @assets.active unless params[:archived] == "true"
+        
+        # Optional status filter (overrides default active filter)
         @assets = @assets.where(status: params[:filter][:status]) if params.dig(:filter, :status)
 
+        # Hierarchy filters
+        if params.dig(:filter, :parent_id)
+          @assets = @assets.where(parent_id: params[:filter][:parent_id])
+        end
+
+        # Filter for root assets only
+        if params.dig(:filter, :root_only) == "true"
+          @assets = @assets.where(parent_id: nil)
+        end
+
         # Handle pagination - support both page[number] and page formats
-        page_number = (params.dig(:page, :number) || params[:page] || 1).to_i
-        page_size = (params.dig(:page, :size) || params[:per_page] || 20).to_i
+        if params[:page].is_a?(Hash) || params[:page].is_a?(ActionController::Parameters)
+          page_number = (params[:page][:number] || 1).to_i
+          page_size = (params[:page][:size] || 20).to_i
+        else
+          page_number = (params[:page] || 1).to_i
+          page_size = (params[:per_page] || 20).to_i
+        end
 
         @assets = @assets.page(page_number).per(page_size)
 
@@ -41,7 +61,7 @@ module Api
       end
 
       def destroy
-        @asset.destroy
+        @asset.archive!
         head :no_content
       end
 
@@ -58,16 +78,27 @@ module Api
       def asset_params
         # Handle jsonapi-rails _jsonapi parameter
         if params[:_jsonapi].present?
-          params.require(:_jsonapi).require(:data).require(:attributes).permit(
-            :name, :status, :notes, :is_location, :is_fixed
-          )
+          base_params = params.require(:_jsonapi).require(:data).require(:attributes)
         elsif params[:data].present?
-          params.require(:data).require(:attributes).permit(
-            :name, :status, :notes, :is_location, :is_fixed
-          )
+          base_params = params.require(:data).require(:attributes)
         else
-          params.permit(:name, :status, :notes, :is_location, :is_fixed)
+          base_params = params
         end
+
+        permitted = base_params.permit(
+          :name, :status, :notes, :current_location_id, :quantity, :parent_id
+        )
+
+        # Handle geometry parameter if present
+        if base_params[:geometry].present?
+          geometry_params = base_params[:geometry]
+          permitted[:geometry] = {
+            type: geometry_params[:type],
+            coordinates: geometry_params[:coordinates]
+          }
+        end
+
+        permitted
       end
     end
   end

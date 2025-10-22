@@ -58,6 +58,8 @@ module Api
           "log--harvest": { href: "#{request.base_url}/api/v1/logs/harvest" },
           "quantities": { href: "#{request.base_url}/api/v1/quantities" },
           "locations": { href: "#{request.base_url}/api/v1/locations" },
+          "predicates": { href: "#{request.base_url}/api/v1/predicates" },
+          "facts": { href: "#{request.base_url}/api/v1/facts" },
           self: { href: "#{request.base_url}/api/v1" }
         }
       end

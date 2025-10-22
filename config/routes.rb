@@ -31,6 +31,12 @@ Rails.application.routes.draw do
 
       # Location routes
       resources :locations, only: [ :index, :show, :create, :update, :destroy ]
+
+      # Predicate routes (vocabulary/schema discovery)
+      resources :predicates, only: [ :index, :show ]
+
+      # Fact routes (semantic knowledge graph)
+      resources :facts, only: [ :index, :show, :create ]
     end
   end
 

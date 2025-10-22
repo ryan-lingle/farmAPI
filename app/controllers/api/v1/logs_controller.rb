@@ -9,8 +9,13 @@ module Api
         @logs = @logs.where(status: params[:filter][:status]) if params.dig(:filter, :status)
 
         # Handle pagination - support both page[number] and page formats
-        page_number = (params.dig(:page, :number) || params[:page] || 1).to_i
-        page_size = (params.dig(:page, :size) || params[:per_page] || 20).to_i
+        if params[:page].is_a?(Hash) || params[:page].is_a?(ActionController::Parameters)
+          page_number = (params[:page][:number] || 1).to_i
+          page_size = (params[:page][:size] || 20).to_i
+        else
+          page_number = (params[:page] || 1).to_i
+          page_size = (params[:per_page] || 20).to_i
+        end
 
         @logs = @logs.page(page_number).per(page_size)
 
@@ -22,10 +27,17 @@ module Api
       end
 
       def create
-        @log = Log.new(log_params)
+        @log = Log.new(log_params.except(:asset_ids))
         @log.log_type = @log_type
 
+        # Handle asset associations
+        if log_params[:asset_ids].present?
+          @log.asset_ids = log_params[:asset_ids]
+        end
+
         if @log.save
+          # If this is a completed movement log, execute the movement
+          @log.complete! if @log.status == "done" && @log.movement_log?
           render_jsonapi(@log)
         else
           render_jsonapi_errors(@log.errors)
@@ -69,6 +81,7 @@ module Api
         permitted = attributes.permit(
           :name, :status, :notes, :timestamp,
           :activity_type, :crop_type,
+          :from_location_id, :to_location_id, :moved_at,
           quantities: [ :measure, :value, :unit, :label ],
           asset_ids: []
         )
