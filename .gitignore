@@ -68,3 +68,10 @@ yarn-debug.log*
 # Ignore credentials files
 /config/credentials/*.key
 
+# Python virtual environment (MCP server)
+mcp_server/.venv/
+mcp_server/__pycache__/
+mcp_server/*.egg-info/
+mcp_server/dist/
+mcp_server/build/
+

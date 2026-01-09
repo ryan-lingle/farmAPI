@@ -6,12 +6,18 @@ module Api
 
       def index
         @assets = Asset.where(asset_type: @asset_type)
-        
-        # Filter out archived assets by default (unless explicitly requested)
-        @assets = @assets.active unless params[:archived] == "true"
-        
-        # Optional status filter (overrides default active filter)
-        @assets = @assets.where(status: params[:filter][:status]) if params.dig(:filter, :status)
+
+        # Handle status filtering
+        if params.dig(:filter, :status)
+          # Explicit status filter requested
+          @assets = @assets.where(status: params[:filter][:status])
+        elsif params[:archived] == "true"
+          # Include all assets (active and archived)
+          # No additional filter needed
+        else
+          # Default: only show active assets
+          @assets = @assets.active
+        end
 
         # Hierarchy filters
         if params.dig(:filter, :parent_id)

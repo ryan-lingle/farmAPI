@@ -76,10 +76,11 @@ module Api
         end
 
         permitted = base_params.permit(
-          :value_numeric, :unit, :observed_at
+          :value_numeric, :unit, :observed_at,
+          :subject_id, :predicate_id, :object_id, :log_id  # Also allow these directly in attributes
         )
 
-        # Extract IDs from relationships
+        # Extract IDs from relationships (overrides attributes if both provided)
         permitted[:subject_id] = relationships.dig(:subject, :data, :id) if relationships.dig(:subject, :data)
         permitted[:predicate_id] = relationships.dig(:predicate, :data, :id) if relationships.dig(:predicate, :data)
         permitted[:object_id] = relationships.dig(:object, :data, :id) if relationships.dig(:object, :data)

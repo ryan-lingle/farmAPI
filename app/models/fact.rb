@@ -4,7 +4,10 @@ class Fact < ApplicationRecord
   belongs_to :predicate
   belongs_to :object, class_name: 'Asset', optional: true
   belongs_to :log, optional: true
-  
+
+  # Callbacks
+  before_validation :set_defaults
+
   # Validations
   validates :observed_at, presence: true
   validate :value_or_object_present
@@ -34,7 +37,11 @@ class Fact < ApplicationRecord
   end
   
   private
-  
+
+  def set_defaults
+    self.observed_at ||= Time.current
+  end
+
   def value_or_object_present
     if predicate&.measurement? && value_numeric.nil?
       errors.add(:value_numeric, "must be present for measurement predicates")

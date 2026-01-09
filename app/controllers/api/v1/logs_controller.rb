@@ -27,17 +27,19 @@ module Api
       end
 
       def create
-        @log = Log.new(log_params.except(:asset_ids))
+        @log = Log.new(log_params)
         @log.log_type = @log_type
 
-        # Handle asset associations
-        if log_params[:asset_ids].present?
-          @log.asset_ids = log_params[:asset_ids]
-        end
-
         if @log.save
-          # If this is a completed movement log, execute the movement
-          @log.complete! if @log.status == "done" && @log.movement_log?
+          # Handle role-based asset associations
+          create_asset_associations
+
+          # If log is created as done, execute completion logic
+          if @log.status == "done"
+            @log.execute_movement! if @log.movement_log?
+            @log.process_harvest! if @log.harvest_log?
+            @log.emit_facts!
+          end
           render_jsonapi(@log)
         else
           render_jsonapi_errors(@log.errors)
@@ -45,7 +47,16 @@ module Api
       end
 
       def update
+        was_pending = @log.pending?
+        becoming_done = log_params[:status] == "done"
+
         if @log.update(log_params)
+          # Trigger completion logic when status changes to done
+          if was_pending && becoming_done
+            @log.execute_movement! if @log.movement_log?
+            @log.process_harvest! if @log.harvest_log?
+            @log.emit_facts!
+          end
           render_jsonapi(@log)
         else
           render_jsonapi_errors(@log.errors)
@@ -67,6 +78,25 @@ module Api
         @log = Log.where(log_type: @log_type).find(params[:id])
       end
 
+      def create_asset_associations
+        # Create role-based asset associations
+        @source_asset_ids&.each do |asset_id|
+          AssetLog.create!(log: @log, asset_id: asset_id, role: 'source')
+        end
+
+        @moved_asset_ids&.each do |asset_id|
+          AssetLog.create!(log: @log, asset_id: asset_id, role: 'moved')
+        end
+
+        @output_asset_ids&.each do |asset_id|
+          AssetLog.create!(log: @log, asset_id: asset_id, role: 'output')
+        end
+
+        @subject_asset_ids&.each do |asset_id|
+          AssetLog.create!(log: @log, asset_id: asset_id, role: 'subject')
+        end
+      end
+
       def log_params
         # Handle jsonapi-rails _jsonapi parameter
         if params[:_jsonapi].present?
@@ -83,13 +113,24 @@ module Api
           :activity_type, :crop_type,
           :from_location_id, :to_location_id, :moved_at,
           quantities: [ :measure, :value, :unit, :label ],
-          asset_ids: []
+          quantities_attributes: [ :measure, :value, :unit, :label ],
+          asset_ids: [],
+          source_asset_ids: [],
+          moved_asset_ids: [],
+          output_asset_ids: [],
+          subject_asset_ids: []
         )
 
-        # Handle quantities if present
+        # Handle quantities (support both 'quantities' and 'quantities_attributes' keys)
         if permitted[:quantities].present?
           permitted[:quantities_attributes] = permitted.delete(:quantities)
         end
+
+        # Store role-based asset IDs for later processing
+        @source_asset_ids = permitted.delete(:source_asset_ids)
+        @moved_asset_ids = permitted.delete(:moved_asset_ids)
+        @output_asset_ids = permitted.delete(:output_asset_ids)
+        @subject_asset_ids = permitted.delete(:subject_asset_ids)
 
         permitted
       end

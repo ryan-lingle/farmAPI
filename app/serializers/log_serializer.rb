@@ -7,6 +7,13 @@ class LogSerializer
 
   has_many :quantities
   has_many :assets
+
+  # Role-based asset relationships
+  has_many :source_assets, serializer: :asset
+  has_many :moved_assets, serializer: :asset
+  has_many :output_assets, serializer: :asset
+  has_many :subject_assets, serializer: :asset
+
   has_one :from_location, serializer: :location
   has_one :to_location, serializer: :location
 
